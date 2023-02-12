@@ -11,6 +11,41 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav>
+        <div class="header">
+          <div><%= link_to image_tag("logo.png", class: 'logo'), "/" %></div>
+          <ul class="navi_lists">
+          <% if user_signed_in? %>
+            <li class="navi_list">
+              <a href="#"><%= current_user.user_name %></a>
+              <ul class="dropdown_lists">
+                <li><%= link_to"予約済み一覧", "/reservations/index", class: "dropdown_list" %></li>
+                <li><%= link_to"施設の新規登録", "/rooms/new", class: "dropdown_list" %></li>
+                <li><%= link_to"登録済一覧", "/rooms/own", class: "dropdown_list" %></li>
+                <li><%= link_to"アカウント設定", "/users/account", class: "dropdown_list" %></li>
+                <li><%= link_to"ログアウト", destroy_user_session_path, method: :delete, class: "dropdown_list" %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to"ログイン", "/users/sign_in", class: "navi_list" %></li>
+            <li><%= link_to"新規登録", "/users/sign_up", class: "navi_list" %></li>
+          <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div>
+    <main>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </main>
+    <footer>
+      <div>
+        <a>Potepan Share</a>
+        <p>Copyright © Potepan Share 2023 All rights reserved</p>
+      </div>
+    </footer> 
   </body>
 </html>

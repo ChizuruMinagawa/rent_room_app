@@ -3,6 +3,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.3'
 
+#認証機能
+gem 'devise'
+#認証機能日本語パッケージ
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+#画像アップロード
+gem 'carrierwave', '~> 2.2.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
 # Use sqlite3 as the database for Active Record

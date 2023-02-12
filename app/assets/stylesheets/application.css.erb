@@ -1,0 +1,115 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #f37053;
+}
+
+footer {
+  background-color: #f37053;
+}
+
+main {
+  background-image: url("<%= asset_path('top_image.jpeg') %>");
+  background-size:cover;
+  height: 1000px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  margin-right: 150px;
+}
+
+.logo {
+  margin: 20px;
+  height: 40%;
+  width: 40%;
+}
+
+.navi_lists {
+  display: flex;
+  column-gap: 20px;
+  list-style: none;
+ }
+
+ .navi_list {
+  color: #fff;
+  position: relative;
+ }
+
+ .dropdown_lists {
+  display: none;/*デフォルトでは非表示の状態にしておく*/
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  list-style: none;
+ }
+
+ .navi_list:hover .dropdown_lists {
+  display: block;
+ }
+
+.dropdown_list {
+  background-color: #004d80;
+  width: 150px;
+  height: 30px;
+  top: 20px;
+}
+
+.dropdown_list:not(:first-child)::before{
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #3492d1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.dropdown_list:hover {
+  background-color: #003558;
+}
+
+.dropdown_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+}
+
+.dropdown_list a::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  transform: rotate(135deg);
+  position: absolute;
+  right: 15px;
+  top: calc(50% - 5px);
+}
