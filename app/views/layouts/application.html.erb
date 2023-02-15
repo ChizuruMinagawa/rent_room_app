@@ -15,8 +15,17 @@
       <nav>
         <div class="header">
           <div><%= link_to image_tag("logo.png", class: 'logo'), "/" %></div>
+
           <ul class="navi_lists">
           <% if user_signed_in? %>
+            <li class="navi_list">
+              <% if current_user.user_image? %>
+                <img src='<%= current_user.user_image %>' class="icon_image">
+              <% else %>
+                <img src="/assets/default-aicon.png" class="icon_image">
+              <% end %>
+            </li>
+
             <li class="navi_list">
               <a href="#"><%= current_user.user_name %></a>
               <ul class="dropdown_lists">
@@ -27,11 +36,13 @@
                 <li><%= link_to"ログアウト", destroy_user_session_path, method: :delete, class: "dropdown_list" %></li>
               </ul>
             </li>
+
           <% else %>
             <li><%= link_to"ログイン", "/users/sign_in", class: "navi_list" %></li>
             <li><%= link_to"新規登録", "/users/sign_up", class: "navi_list" %></li>
           <% end %>
           </ul>
+
         </div>
       </nav>
     </header>

@@ -1,0 +1,35 @@
+<h2>設定</h2>
+<div>
+  <ul>
+    <li><%= link_to"アカウント", "/users/account" %></li>
+    <li><%= link_to"プロフィール", "/users/profile" %></li>
+  </ul>
+</div>
+
+<h3>プロフィール編集</h3>
+
+<%= form_with model: @user do |f| %>
+  <div>
+    <div class="user_group">
+      <div><%= f.label :user_image, "アイコン画像" %></div>
+      <div><%= f.file_field :user_image, accept: 'image/*' %></div>
+    </div>
+
+    <div class="user_group">
+      <div><%= f.label :user_name, "名前" %></div>
+      <div><%= f.text_field :user_name %></div>
+    </div>
+
+    <div class="user_group">
+      <div><%= f.label :introduction, "自己紹介" %></div>
+      <div><%= f.text_area :introduction %></div>
+    </div>
+
+    <div>
+      <ul>
+        <li><%= f.submit "保存" %></li>
+        <li><%= link_to "キャンセル", "/users/profile" %></li>
+      </ul>
+    </div>
+  </div>
+<% end %>

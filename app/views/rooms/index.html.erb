@@ -1,0 +1,11 @@
+<div><%= @rooms.count %>件がヒットしました</div>
+<div class="room_group">  
+  <% @rooms.each do |room| %>
+    <ul>
+      <li><%= room.room_image %></li>
+      <li><%= room.room_name %></li>
+      <li><%= room.price %></li>
+      <li><%= room.detile %></li>
+    </ul>
+  <% end %>
+</div>

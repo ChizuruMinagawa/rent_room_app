@@ -9,11 +9,16 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
+  # アップロードした画像の表示
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
+  # デフォルト画像の設定
+  def default_url
+    'default-aicon.png'
+  end
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
   #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
@@ -35,6 +40,10 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
+  # アップロードファイルの指定
+  def extension_whitelist
+    %w[jpg jpeg gif png]
+  end
   # def extension_allowlist
   #   %w(jpg jpeg gif png)
   # end
