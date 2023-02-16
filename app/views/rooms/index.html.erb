@@ -2,10 +2,11 @@
 <div class="room_group">  
   <% @rooms.each do |room| %>
     <ul>
-      <li><%= room.room_image %></li>
+      <li><img src="/assets/default-room.png" class="index_room_image"></li>
       <li><%= room.room_name %></li>
-      <li><%= room.price %></li>
-      <li><%= room.detile %></li>
+      <li>¥<%= room.price %></li>
+      <li><%= room.room_detail %></li>
+      <li><%= link_to "詳細へ", "/rooms/#{room.id}" %></li>
     </ul>
   <% end %>
 </div>

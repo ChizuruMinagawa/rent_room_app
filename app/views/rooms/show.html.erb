@@ -1,19 +1,15 @@
 <div><%= link_to "戻る", :back %></div>
 
-<% @rooms.each do |room| %>  
-  <div><%= room.room_image %></div>
-  <div class="room_group">
-    <div><%= room.room_name %></div>
-    <div><%= room.price %></div>
-    <div><%= room.address %></div>
-    <div><%= room.detile %></div>
-  </div>
-<% end %>
-<%=  %>     
-  <div class="yoyaku_group">
-    <div>
-      <%= f.label :start_date, "チェックイン" %>
-      <br>
-      <%= f.datetime_field %>
-    </div>
-  </div>
+<div>
+  <% if @room.room_image? %>
+    <img src='<%= @room.room_image %>' class="show_room_image">
+  <% else %>
+    <img src="/assets/default-room.png" class="show_room_image">
+  <% end %>
+</div>
+<div class="room_group">
+  <div><%= @room.room_name %></div>
+  <div><%= @room.price %></div>
+  <div><%= @room.address %></div>
+  <div><%= @room.room_detail %></div>
+</div>

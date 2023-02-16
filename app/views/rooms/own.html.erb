@@ -1,0 +1,29 @@
+<table> 
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>料金</th>
+      <th>作成日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td>
+          <% if room.room_image? %>
+            <img src='<%= room.room_image %>' class="own_room_image">
+          <% else %>
+            <img src="/assets/default-room.png" class="own_room_image">
+          <% end %>
+        </td>
+        <td><%= room.room_name %></td>
+        <td><%= room.room_detail %></td>
+        <td>¥<%= room.price %></td>
+        <td><%= room.updated_at.to_s %></td>
+        <td><%= link_to "編集", "/rooms/#{room.id}/edit" %><td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

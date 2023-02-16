@@ -18,6 +18,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # デフォルト画像の設定
   def default_url
     'default-aicon.png'
+    'default-room.png'
   end
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:

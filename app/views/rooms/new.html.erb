@@ -1,0 +1,40 @@
+<h2>新規登録<h2>
+
+<% if flash[:notice] %>
+  <div><%= flash[:notice] %></div>
+<% end %>
+
+<%= form_with model: @room do |f| %>
+  <div class="room_form_gruop">
+    <div><%= f.label :room_name, "施設名" %></div>
+    <div><%= f.text_field :room_name %></div>
+  </div>
+
+  <div class="room_form_gruop">
+    <div><%= f.label :room_detail, "施設詳細" %></div>
+    <div><%= f.text_area :room_detail, size: "65x20" %></div>
+  </div>
+
+  <div class="room_form_gruop">
+    <div>¥<%= f.label :price, "料金" %></div>
+    <div><%= f.text_field :price %></div>
+  </div>
+
+  <div class="room_form_gruop">
+    <div><%= f.label :address, "住所" %></div>
+    <div><%= f.text_field :address %></div>
+  </div>
+
+  <div class="room_form_gruop">
+    <div><%= f.label :room_image, "施設画像" %></div>
+    <div><%= f.file_field :room_image, accept: 'image/*' %></div>
+  </div>
+
+  <div>
+    <ul>
+      <li><%= f.submit "保存", class: "button" %></li>
+      <li><%= link_to "キャンセル", :back %></li>
+    </ul>
+  <div>
+
+<% end %>
