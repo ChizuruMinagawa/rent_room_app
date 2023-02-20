@@ -15,10 +15,9 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(params.require(:room).permit(:room_name, :room_detail, :price, :address, :room_image))
     @room.user_id = current_user.id
-    #@room.room_image = "default-room.png"
     if @room.save
       flash[:notice] = "施設の新規登録をしました"
-      redirect_to("/rooms/own")
+      redirect_to "/rooms/own"
     else
       flash.now[:notice] = "施設の新規登録に失敗しました"
       render "new"
@@ -27,6 +26,7 @@ class RoomsController < ApplicationController
   
   def show
     @room = Room.find(params[:id])
+    @reservation = Reservation.new
   end
 
   def edit

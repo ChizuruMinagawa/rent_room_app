@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'reservations/index'
   get 'rooms/show'
   #deviseルーティング自動設定コード
   devise_for :users, controllers: {
@@ -15,9 +16,19 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'rooms/own', to:'rooms#own'
-
+  resources :rooms do
+    collection do
+      get :own
+    end
+  end
   resources :rooms
+
+  resources :reservations do
+    collection do
+      post :confirm, only: :confirm
+    end
+  end
+  resources :reservations
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,42 @@
+<h2>予約済み一覧</h2>
+
+<table> 
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>合計料金</th>
+      <th>チェックイン</th>
+      <th>チェックアウト</th>
+      <th>利用日数</th>
+      <th>利用人数</th>
+      <th>予約確定日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td>
+          <% if reservation.room.room_image? %>
+            <img src='<%= room.room_image %>' class="own_room_image">
+          <% else %>
+            <img src="/assets/default-room.png" class="own_room_image">
+          <% end %>
+        </td>
+        <td><%= reservation.room.room_name %></td>
+        <td><%= reservation.room.room_detail %></td>
+        <td>¥
+          <% total_day = ((reservation.end_date - reservation.start_date) / (24*60*60)).to_i %>
+          <% total_price = (reservation.people).to_i * reservation.room.price * total_day %>
+          <%= total_price %>
+        </td>
+        <td><%= reservation.start_date.strftime("%Y/%m/%d") %></td>
+        <td><%= reservation.end_date.strftime("%Y/%m/%d") %></td>
+        <td><%= total_day %>日</td>
+        <td><%= reservation.people %>人</td>
+        <td><%= reservation.updated_at.strftime("%Y/%m/%d %H:%M") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
