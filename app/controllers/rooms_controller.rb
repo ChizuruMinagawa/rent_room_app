@@ -1,6 +1,9 @@
 class RoomsController < ApplicationController
+  before_action :set_q, only: [:index, :search]
+
   def index
-    @rooms = Room.all
+    @results = @q.result
+    @rooms = @q.result(distinct: true)
   end
 
   def own
@@ -49,6 +52,10 @@ class RoomsController < ApplicationController
   
   def room_params
     params.require(:room).permit(:room_name, :room_detail, :price, :address, :room_image)
+  end
+
+  def set_q
+    @q = Room.ransack(params[:q])
   end
 
 end
