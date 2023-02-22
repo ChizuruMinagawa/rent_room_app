@@ -1,3 +1,13 @@
+<header class="search">
+  <%= search_form_for @q, url: rooms_path do |f| %>
+    <%= f.label :address, "エリアを入力" %>
+    <%= f.search_field :address_cont %>
+    <%= f.label :room_detail, "キーワードを入力" %>
+    <%= f.search_field :room_detail_cont %>
+    <%= f.submit "検索" %>
+  <% end %>
+</header>
+
 <div class="RoomContainer">  
   <div><%= link_to "戻る", :back %></div>
   <div>
@@ -30,7 +40,13 @@
           <div><%= f.label :people, "人数" %></div>
           <div><%= f.text_field :people, required: true, in:1..50 %></div>
         </div>
-        <div><%= f.submit "確認画面へ" %></div>
+        <div>
+          <% if user_signed_in? %>
+            <%= f.submit "確認画面へ" %>
+          <% else %>
+            <%= link_to"ログイン", "/users/sign_in" %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

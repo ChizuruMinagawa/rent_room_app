@@ -8,6 +8,8 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+        introduction: "自己紹介"
+        user_image: "アイコン画像"
     models:
       user: "ユーザ"
   devise:

@@ -20,10 +20,10 @@
             <img src="/assets/default-room.png" class="own_room_image">
           <% end %>
         </td>
-        <td><%= room.room_name %></td>
+        <td><%= link_to room.room_name, "/rooms/#{room.id}" %></td>
         <td><%= room.room_detail %></td>
         <td>¥<%= room.price %></td>
-        <td><%= room.updated_at.to_s %></td>
+        <td><%= room.updated_at.strftime("%Y/%m/%d %H:%M") %></td>
         <td><%= link_to "編集", "/rooms/#{room.id}/edit" %><td>
       </tr>
     <% end %>

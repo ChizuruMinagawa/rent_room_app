@@ -17,16 +17,17 @@ Rails.application.routes.draw do
   end
 
 
-  resources :rooms do
-    collection do
-      get :search
-    end
-  end  
+  
   resources :rooms do
     collection do
       get :own
     end
   end
+  resources :rooms do
+    collection do
+      get :search
+    end
+  end  
   resources :rooms
 
   resources :reservations do

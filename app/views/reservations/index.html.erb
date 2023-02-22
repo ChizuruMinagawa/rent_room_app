@@ -24,7 +24,7 @@
             <img src="/assets/default-room.png" class="own_room_image">
           <% end %>
         </td>
-        <td><%= reservation.room.room_name %></td>
+        <td><%= link_to reservation.room.room_name, "/rooms/#{reservation.room_id}" %></td>
         <td><%= reservation.room.room_detail %></td>
         <td>¥
           <% total_day = ((reservation.end_date - reservation.start_date) / (24*60*60)).to_i %>

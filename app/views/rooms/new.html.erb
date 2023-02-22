@@ -1,8 +1,6 @@
-<h2>新規登録<h2>
+<%= render "shared/error", obj: @room %>
 
-<% if flash[:notice] %>
-  <div><%= flash[:notice] %></div>
-<% end %>
+<h2>施設新規登録<h2>
 
 <%= form_with model: @room do |f| %>
   <div class="room_form_gruop">

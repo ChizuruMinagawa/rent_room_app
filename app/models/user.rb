@@ -8,6 +8,8 @@ class User < ApplicationRecord
   mount_uploader :user_image, ImageUploader
 
   has_many :rooms
-
   has_many :reservations, dependent: :destroy
+
+  validates :user_name, presence: true
+  validates :introduction, length: {maximum: 500}
 end

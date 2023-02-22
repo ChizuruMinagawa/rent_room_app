@@ -1,4 +1,14 @@
-<div><%= @rooms.count %>件がヒットしました</div>
+<header class="search">
+  <%= search_form_for @q, url: rooms_path do |f| %>
+    <%= f.label :address, "エリアを入力" %>
+    <%= f.search_field :address_cont %>
+    <%= f.label :room_detail, "キーワードを入力" %>
+    <%= f.search_field :room_detail_cont %>
+    <%= f.submit "検索" %>
+  <% end %>
+</header>
+
+<div><%= @rooms.count %>件がヒットしました。</div>
 <div class="room_group">  
   <% @rooms.each do |room| %>
     <ul>

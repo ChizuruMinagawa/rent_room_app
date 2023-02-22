@@ -1,4 +1,10 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>設定</h2>
+<div>
+  <ul>
+    <li><%= link_to"アカウント", "/users/account" %></li>
+    <li><%= link_to"プロフィール", "/users/profile" %></li>
+  </ul>
+</div>
 
 <%= form_with model: @user, url: user_registration_path, local: true, html: { method: :put } do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
@@ -13,11 +19,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password %> <i>(変更後パスワードを入力)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> 文字以上入力してください</em>
     <% end %>
   </div>
 
@@ -27,17 +33,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %> <i>(パスワードを変更する場合、確認のために必要です)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div>
+    <ul>
+      <li><%= f.submit "保存" %></li>
+      <li><%= link_to "キャンセル", "/users/profile" %></li>
+    </ul>
   </div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

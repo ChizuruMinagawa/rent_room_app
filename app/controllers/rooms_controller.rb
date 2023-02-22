@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_q, only: [:index, :search]
+  before_action :set_q, only: [:index, :search, :show]
 
   def index
     @results = @q.result
@@ -19,16 +19,16 @@ class RoomsController < ApplicationController
     @room = Room.new(params.require(:room).permit(:room_name, :room_detail, :price, :address, :room_image))
     @room.user_id = current_user.id
     if @room.save
-      flash[:notice] = "施設の新規登録をしました"
+      flash[:notice] = "施設の新規登録をしました。"
       redirect_to "/rooms/own"
     else
-      flash.now[:notice] = "施設の新規登録に失敗しました"
+      flash.now[:notice] = "施設の新規登録に失敗しました。"
       render "new"
    end
   end
   
   def show
-    @room = Room.find(params[:id])
+    @room = Room.find_by(id: params[:id])
     @reservation = Reservation.new
   end
 

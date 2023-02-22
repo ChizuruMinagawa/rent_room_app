@@ -1,3 +1,5 @@
+<%= render "shared/error", obj: @reservation %>
+
 <h2>予約確認フォーム</h2>
 <div>
   <div class="reservation_form">
@@ -36,7 +38,7 @@
       <%= f.hidden_field :end_date, value:@reservation.end_date %>
       <%= f.hidden_field :people, value:@reservation.people %>
       <div><%= f.submit "予約確定" %></div>
-      <div><%= f.submit "入力画面に戻る", :start_date => "back" %></div>
+      <div><%= link_to "入力画面に戻る", "/rooms/#{@room.id}" %></div>
     <% end %>
   </div>
 </div>
