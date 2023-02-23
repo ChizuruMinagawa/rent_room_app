@@ -15,10 +15,10 @@ class UsersController < ApplicationController
   def update
    @user = User.find(current_user.id)
     if @user.update(params.require(:user).permit(:user_image, :user_name, :introduction))
-      flash[:notice] = "ユーザー情報を編集をしました。"
+      flash[:notice] = "ユーザー情報を編集をしました"
       redirect_to "/users/profile" 
     else
-      flash.now[:notice] = "ユーザー情報の編集ができませんでした。"
+      flash.now[:notice] = "ユーザー情報の編集に失敗しました"
       render "edit"
     end
   end

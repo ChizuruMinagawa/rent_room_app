@@ -15,8 +15,6 @@ Rails.application.routes.draw do
       get 'account', to:'users#account_show'
     end
   end
-
-
   
   resources :rooms do
     collection do
@@ -27,9 +25,10 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
-  end  
-  resources :rooms
+  end
 
+  resources :rooms
+  
   resources :reservations do
     collection do
       post :confirm, only: :confirm

@@ -1,44 +1,48 @@
 <%= render "shared/error", obj: @reservation %>
 
-<h2>予約確認フォーム</h2>
-<div>
-  <div class="reservation_form">
-    <div>チェックイン</div>
-    <div><%= @reservation.start_date.strftime("%Y/%m/%d") %></div>
-  </div>
+<div class="confirm_form">
+  <h2>予約確認フォーム</h2>
+  <table>
+    <tr>
+      <th align="right">チェックイン</th>
+      <td><%= @reservation.start_date.strftime("%Y/%m/%d") %></td>
+    </tr>
+    <tr>
+      <th align="right">チェックアウト</th>
+      <td><%= @reservation.end_date.strftime("%Y/%m/%d") %></td>
+    </tr>
+    <tr>
+      <th align="right">合計日数</th>
+      <td><%= total_day = ((@reservation.end_date - @reservation.start_date)/(24*60*60)).to_i %>日</td>
+    </tr>
+    <tr>
+      <th align="right">人数</th>
+      <td><%= @reservation.people %>人</td>
+    </tr>
+    <tr>
+      <th align="right">合計金額 ¥</th>
+      <td>
+        <% total_price = (@reservation.people) * @reservation.room.price * total_day %>
+        <%= total_price %>
+      </td>
+    </tr>
+    <tr>
+      <th align="right"></th>
+      <td></td>
+    </tr>
+  </table>
 
-  <div class="reservation_form">
-    <div>チェックアウト</div>
-    <div><%= @reservation.end_date.strftime("%Y/%m/%d") %></div>
-  </div>
-
-  <div class="reservation_form">
-    <div>合計日数</div>
-    <div><%= total_day = ((@reservation.end_date - @reservation.start_date)/(24*60*60)).to_i %>日</div>
-  </div>
-
-  <div class="reservation_form">
-    <div>人数</div>
-    <div><%= @reservation.people %>人</div>
-  </div>
-
-  <div class="reservation_form">
-    <div>合計金額</div>
-    <div>¥
-      <% total_price = (@reservation.people).to_i * @reservation.room.price * total_day %>
-      <%= total_price %>
-    </div>
-  </div>
-
-  <div class="submit">
+  <div class="confirm_submit">
     <%= form_with model: @reservation, url: {controller: "reservations", action: "create" } do |f| %>
       <%= f.hidden_field :room_id, value:@room.id %>
       <%= f.hidden_field :user_id, value:current_user.id %>
       <%= f.hidden_field :start_date, value:@reservation.start_date %>
       <%= f.hidden_field :end_date, value:@reservation.end_date %>
       <%= f.hidden_field :people, value:@reservation.people %>
-      <div><%= f.submit "予約確定" %></div>
-      <div><%= link_to "入力画面に戻る", "/rooms/#{@room.id}" %></div>
+      <ul class="confirm_submit_button">
+        <li><%= f.submit "予約確定", class: "form_button" %></li>
+        <li><%= link_to "入力画面に戻る", "/rooms/#{@room.id}", class: "form_back" %></li>
+      </ul>
     <% end %>
   </div>
 </div>

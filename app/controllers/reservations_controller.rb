@@ -23,10 +23,10 @@ class ReservationsController < ApplicationController
     @room = Room.find(params[:reservation][:room_id])
     if @reservation.start_date < Date.yesterday #今日以降の日付にすること
       redirect_to "/rooms/#{@reservation.room_id}"
-      flash[:notice] = "予約日は今日以降の日付を入力してください。"
+      flash[:notice] = "予約日は今日以降の日付を入力してください"
     elsif @reservation.end_date < @reservation.start_date #終了日を開始日より後の日付にすること
       redirect_to "/rooms/#{@reservation.room_id}"
-      flash[:notice] = "チェックアウトはチェックインより後の日付を入力してください。"
+      flash[:notice] = "チェックアウトはチェックインより後の日付を入力してください"
     end
   end
    

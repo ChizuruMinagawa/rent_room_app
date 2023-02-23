@@ -1,7 +1,46 @@
-<main>
-  <%= search_form_for @q, url: rooms_path do |f| %>
-    <%= f.label :address, "エリアを入力" %>
-    <%= f.search_field :address_cont %>
-    <%= f.submit "検索" %>
-  <% end %>
-</main>
+<%= search_form_for @q, url: rooms_path do |f| %>
+  <main>
+    <div class="main_group">
+      <strong class="top_text">さぁ、旅に出よう！</strong>
+      <div class="search_form">
+        <%= f.search_field :address_cont, class: "top_search", placeholder: "エリアを入力" %>
+        <%= f.submit "検索", class: "top_submit" %>
+      </div>
+    </div>
+  </main>
+
+  <section>
+    <h2>おすすめのエリア</h2>
+    <div class="area_list">
+      <div class="area_group">
+        <%= link_to ({ controller: "rooms", action: "index", q: { address_cont: '北海道'}}) do %>
+          <div><%= image_tag("hokkaidou_area.jpeg", class: 'area') %></div>
+        <% end %>
+        <div class="area_word">北海道</div>
+      </div>
+
+      <div class="area_group">
+        <%= link_to ({ controller: "rooms", action: "index", q: { address_cont: '東京'}}) do %>
+          <div>
+            <%= image_tag("tokyo_area.jpeg", class: 'area') %>
+          </div>
+          <div class="area_word">東京</div>
+        <% end %>
+      </div>
+
+      <div class="area_group">
+        <%= link_to ({ controller: "rooms", action: "index", q: { address_cont: '京都'}}) do %>
+          <div><%= image_tag("kyouto_area.jpeg", class: 'area') %></div>
+        <% end %>
+        <div class="area_word">京都</div>
+      </div>
+
+      <div class="area_group">
+        <%= link_to ({ controller: "rooms", action: "index", q: { address_cont: '大阪'}}) do %>
+          <div><%= image_tag("osaka_area.jpeg", class: 'area') %></div>
+        <% end %>
+        <div class="area_word">大阪</div>
+      </div>
+    </div>
+  </section>
+<% end %>

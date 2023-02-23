@@ -1,22 +1,25 @@
-<header class="search">
+<aside class="w_search">
   <%= search_form_for @q, url: rooms_path do |f| %>
-    <%= f.label :address, "エリアを入力" %>
-    <%= f.search_field :address_cont %>
-    <%= f.label :room_detail, "キーワードを入力" %>
-    <%= f.search_field :room_detail_cont %>
-    <%= f.submit "検索" %>
+    <%= f.label :address, "エリア" %>
+    <%= f.search_field :address_cont, placeholder: "エリアを入力", class: "w_search_field" %>
+    <%= f.label :room_detail, "キーワード" %>
+    <%= f.search_field :room_detail_cont, placeholder: "キーワードを入力", class: "w_search_field" %>
+    <%= f.submit "検索", class: "w_search_submit" %>
   <% end %>
-</header>
+</aside>
 
 <div><%= @rooms.count %>件がヒットしました。</div>
 <div class="room_group">  
   <% @rooms.each do |room| %>
-    <ul>
-      <li><img src="/assets/default-room.png" class="index_room_image"></li>
-      <li><%= room.room_name %></li>
-      <li>¥<%= room.price %></li>
-      <li><%= room.room_detail %></li>
-      <li><%= link_to "詳細へ", "/rooms/#{room.id}" %></li>
-    </ul>
+    <div class="room_lists">
+      <ul class="room_list">
+        <li><img src="/assets/default-room.png" class="index_room_image"></li>
+        <li class="room_name_list"><%= room.room_name %></li>
+        <li><%= room.address %></li>
+        <li>¥<%= room.price %>〜</li>
+        <li><%= room.room_detail.truncate(180) %></li>
+        <li><%= link_to "詳細へ", "/rooms/#{room.id}", class: "link_text" %></li>
+      </ul>
+    </div>
   <% end %>
 </div>

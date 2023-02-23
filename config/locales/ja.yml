@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       room: ルーム
+      reservation: 予約
     attributes:
       room:
         room_name: 施設名
@@ -9,12 +10,7 @@ ja:
         address: 住所
         room_detail: 施設詳細
         room_image: 施設画像
-    models:
-      reservation: 予約
-    attributes:
       reservation:
         start_date: チェックイン
         end_date: チェックアウト
         people: 人数
-
-

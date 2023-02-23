@@ -1,38 +1,33 @@
 <%= render "shared/error", obj: @room %>
 
-<h2>登録施設編集<h2>
+<h2 class="room_form_group">登録施設編集<h2>
 
 <%= form_with model: @room do |f| %>
-  <div class="room_form_gruop">
-    <div><%= f.label :room_name, "施設名" %></div>
-    <div><%= f.text_field :room_name %></div>
-  </div>
+  <table class="room_form_group">
+    <tr>
+      <th align="right"><%= f.label :room_name, "施設名" %><th>
+      <td><%= f.text_field :room_name, class: "room_input_field" %></td>
+    </tr>
+    <tr>
+      <th align="right"><%= f.label :room_detail, "施設詳細" %><th>
+      <td><%= f.text_area :room_detail, size: "69x15" %></td>
+    </tr>
+    <tr>
+      <th align="right"><%= f.label :price, "料金 ¥" %><th>
+      <td><%= f.text_field :price, class: "room_input_field" %></td>
+    </tr>
+    <tr>
+      <th align="right"><%= f.label :address, "住所" %><th>
+      <td><%= f.text_field :address, class: "room_input_field" %></td>
+    </tr>
+    <tr>
+      <th align="right"><%= f.label :room_image, "施設画像" %><th>
+      <td><%= f.file_field :room_image, accept: 'image/*' %></td>
+    </tr>
+  </table>
 
-  <div class="room_form_gruop">
-    <div><%= f.label :room_detail, "施設詳細" %></div>
-    <div><%= f.text_area :room_detail, size: "65x20" %></div>
-  </div>
-
-  <div class="room_form_gruop">
-    <div>¥<%= f.label :price, "料金" %></div>
-    <div><%= f.text_field :price %></div>
-  </div>
-
-  <div class="room_form_gruop">
-    <div><%= f.label :address, "住所" %></div>
-    <div><%= f.text_field :address %></div>
-  </div>
-
-  <div class="room_form_gruop">
-    <div><%= f.label :room_image, "施設画像" %></div>
-    <div><%= f.file_field :room_image, accept: 'image/*' %></div>
-  </div>
-
-  <div>
-    <ul>
-      <li><%= f.submit "保存", class: "button" %></li>
-      <li><%= link_to "キャンセル", :back %></li>
-    </ul>
-  <div>
-
+  <ul class="form_submit">
+    <li><%= f.submit "保存", class: "form_button" %></li>
+    <li><%= link_to "キャンセル", :back, class: "form_back" %></li>
+  </ul>
 <% end %>

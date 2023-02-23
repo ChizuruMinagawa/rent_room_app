@@ -27,7 +27,7 @@
             </li>
 
             <li class="navi_list">
-              <a href="#"><%= current_user.user_name %></a>
+              <a href="#", class="navi_list"><%= current_user.user_name %></a>
               <ul class="dropdown_lists">
                 <li><%= link_to"予約済み一覧", "/reservations/index", class: "dropdown_list" %></li>
                 <li><%= link_to"施設の新規登録", "/rooms/new", class: "dropdown_list" %></li>
@@ -46,16 +46,14 @@
         </div>
       </nav>
     </header>
-    <aside>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </aside>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
+    
     <footer>
-      <div>
-        <a>Potepan Share</a>
-        <p>Copyright © Potepan Share 2023 All rights reserved</p>
-      </div>
+      <div>Potepan Share</div>
+      <div>Copyright © Potepan Share 2023 All rights reserved</div>
     </footer> 
   </body>
 </html>

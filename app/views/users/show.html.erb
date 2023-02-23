@@ -1,24 +1,23 @@
-<h2>設定</h2>
-<div><%= link_to"編集", "/users/profile/edit" %><div>
+<h2>プロフィール設定</h2>
 <div>
-  <ul>
-    <li><%= link_to"アカウント", "/users/account" %></li>
-    <li><%= link_to"プロフィール", "/users/profile" %></li>
+  <ul class="profile">
+    <li><%= link_to"アカウント", "/users/account", class: "link_text" %></li>
+    <li><%= link_to"プロフィール", "/users/profile", class: "link_text" %></li>
   </ul>
 </div>
 
-<h3>プロフィール</h3>
+<div><%= link_to"編集", "/users/profile/edit", class: "link_text" %><div>
 
-<div>
-  <ul>
-    <li>
+<table class="profile_detail">
+  <tr>
+    <th colspan="2">
       <% if current_user.user_image? %>
-        <img src='<%= current_user.user_image %>' class="show_icon_image">
+          <img src='<%= current_user.user_image %>' class="show_icon_image">
       <% else %>
         <img src="/assets/default-aicon.png" class="show_icon_image">
       <% end %>
-    </li>
-    <li><%= current_user.user_name %></li>
-    <li><%= current_user.introduction %></li>
-  </ul>
-</div>
+    </th>
+  </tr>
+  <tr><th align="right">名前:</th><td><%= current_user.user_name %></td></tr>
+  <tr><th align="right">自己紹介:</th><td><%= current_user.introduction %></td></tr>
+</table>

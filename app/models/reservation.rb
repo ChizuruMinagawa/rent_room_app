@@ -4,7 +4,7 @@ class Reservation < ApplicationRecord
 
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :people, presence: true, numericality: true
+  validates :people, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 50}
 
   validate :start_date_check #開始日が今日以降になるよう設定(もしcontrollerのバリデーションをすり抜けた場合用)
   def start_date_check

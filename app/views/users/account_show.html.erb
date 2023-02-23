@@ -1,17 +1,14 @@
-<h2>設定</h2>
-<div><%= link_to"編集", "/users/edit" %><div>
+<h2>アカウント設定</h2>
 <div>
-  <ul>
-    <li><%= link_to"アカウント", "/users/account" %></li>
-    <li><%= link_to"プロフィール", "/users/profile" %></li>
+  <ul class="profile">
+    <li><%= link_to"アカウント", "/users/account", class: "link_text" %></li>
+    <li><%= link_to"プロフィール", "/users/profile", class: "link_text" %></li>
   </ul>
 </div>
 
-<h3>アカウント</h3>
+<div><%= link_to"編集", "/users/edit", class: "link_text" %><div>
 
-<div>
-  <ul>
-    <li><%= current_user.email %></li>
-    <li>＊＊＊＊＊＊＊＊</li>
-  </ul>
-</div>
+<table class="profile_detail">
+  <tr><th align="right">メールアドレス:</th><td><%= current_user.email %></td></tr>
+  <tr><th align="right">パスワード:</th><td>＊＊＊＊＊＊＊＊</td></tr>
+</table>

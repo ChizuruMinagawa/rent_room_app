@@ -19,12 +19,47 @@ body {
   padding: 0;
 }
 
-header {
-  background-color: #f37053;
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.notice {
+  list-style-type: none;
+  color: #ff0000;
+  font-size: 20px;
+  padding: 0 5px;
+}
+
+.alert {
+  list-style-type: none;
+  color: #ff0000;
+  font-size: 20px;
+  padding: 0 5px;
+}
+
+.error {
+  list-style-type: none;
+  color: #ff0000;
+  font-size: 15px;
+  padding: 0 10px;
+  line-height: 1;
+}
+
+.error_explanation {
+  list-style-type: none;
+  color: #ff0000;
+  font-size: 20px;
+  padding: 0 5px;
 }
 
 footer {
-  background-color: #f37053;
+  background-color: #f37055;
+}
+
+/* ヘッダー始 */
+header {
+  background-color: #f37055;
 }
 
 .icon_image {
@@ -58,10 +93,11 @@ footer {
  .navi_list {
   color: #fff;
   position: relative;
+  text-decoration: none;
  }
 
  .dropdown_lists {
-  display: none;/*デフォルトでは非表示の状態にしておく*/
+  display: none;
   width: 100%;
   position: absolute;
   top: 0;
@@ -115,3 +151,256 @@ footer {
   right: 15px;
   top: calc(50% - 5px);
 }
+/* ヘッダー終 */
+
+/* トップページ始 */
+.area_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  grid-gap: 20px;
+}
+
+.area_group {
+  position: relative;
+}
+
+.area {
+  height: 400px;
+  width: 600px;
+}
+
+.area_word {
+  font-size: 40px;
+  color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 20px;
+}
+
+.search_form {
+  display: flex;
+  gap: 10px;
+}
+
+.top_search {
+  height: 50px;
+  width: 800px;
+  font-size: 25px;
+}
+
+.top_submit {
+  height: 55px;
+  width: 120px;
+  font-size: 25px;
+}
+
+.top_text  {
+  font-size: 100px;
+  color: #ff5106;
+}
+
+main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  background-color: #fff;
+  background-blend-mode: hard-light;
+}
+/* トップページ終 */
+
+/* アカウント設定ページ始 */
+.profile {
+  padding: 0;
+  border: 1px solid #dfe2e6;
+  display: flex;
+  justify-content: space-around;
+}
+
+.link_text {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.profile_detail {
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+}
+/* アカウント設定ページ終 */
+
+/* ルーム作成・編集ページ始 */
+.room_form_group {
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.room_input_field {
+  height: 30px;
+  width: 500px;
+}
+/* ルーム作成・編集ページ終 */
+
+/* ルーム詳細ページ始 */
+.room_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  line-height: 2;
+}
+
+.reservation_form_group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.room_name{
+  font-size: 30px;
+}
+
+.reservation_button {
+	border-style:none;
+	font-size:130%;
+	font-weight:bold;
+	color: #ffffff;
+	margin:.5em .5em .5em 0;
+	padding:.3em 0 .4em;
+	width:150px;
+	background:#6a6a6a;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.reservation_button:hover {
+	background-color: #f37055;
+}
+
+.sign_in_button {
+  text-decoration: none;
+  padding: 8px 30px;
+	font-size:130%;
+	font-weight:bold;
+	color: #ffffff;
+	width:150px;
+	background:#6a6a6a;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.sign_in_button:hover {
+	background-color: #f37055;
+}
+/* ルーム詳細ページ終 */
+
+/* 予約済み・登録済みページ始 */
+.register_group {
+  border-collapse:separate;
+  border-spacing:20px;
+  width: 100%;
+  text-align: center;
+}
+
+.headline {
+  background-color: rgb(250, 210, 210);
+}
+
+.register_group td:nth-child(3) {
+  width: 40%;
+}
+/* 予約済み・登録済みページ終 */
+
+/* 送信・キャンセルボタン始 */
+.form_submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_button {
+  font-size: 20px;
+  text-decoration: none;
+  margin: 10px;
+  border-style: solid;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.form_back {
+  font-size: 20px;
+  text-decoration: none;
+  margin: 10px;
+  border-style: solid;
+  padding: 10px;
+  border-radius: 10px;
+}
+/* 送信・キャンセルボタン終 */
+
+/* 検索欄　始 */
+.w_search {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.w_search_field {
+  height: 40px;
+  width: 300px;
+}
+
+.w_search_submit {
+  height: 40px;
+  width: 100px;
+  font-size: 20px;
+}
+/* 検索欄　終 */
+
+/* ルーム一覧ページ始 */
+.room_group {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.room_lists {
+  margin: 20px;
+  height: 500px;
+  width: 430px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff692;
+  border-radius: 30px;
+}
+
+.room_list {
+  margin: 10px;
+  word-break: break-all;
+}
+
+.room_name_list {
+  font-size: 30px;
+}
+/* ルーム一覧ページ終 */
+
+/* 確認ページ始 */
+.confirm_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.confirm_submit_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 確認ページ終 */

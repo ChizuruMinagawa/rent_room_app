@@ -1,46 +1,39 @@
-<h2>設定</h2>
+<h2>アカウント編集</h2>
 <div>
-  <ul>
-    <li><%= link_to"アカウント", "/users/account" %></li>
-    <li><%= link_to"プロフィール", "/users/profile" %></li>
+  <ul class="profile">
+    <li><%= link_to"アカウント", "/users/account", class: "link_text" %></li>
+    <li><%= link_to"プロフィール", "/users/profile", class: "link_text" %></li>
   </ul>
 </div>
 
 <%= form_with model: @user, url: user_registration_path, local: true, html: { method: :put } do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(変更後パスワードを入力)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> 文字以上入力してください</em>
+  <table class="profile_detail">
+    <tr>
+      <th align="right"><%= f.label :email %>:</th>
+      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    </tr>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <tr>
+      <th align="right"><%= f.label :password, "変更後パスワード" %>:</th>
+      <td><%= f.password_field :password, autocomplete: "new-password", placeholder: "変更する場合のみ" %></td>
+    </tr>
+    <tr>
+      <th align="right"><%= f.label :password_confirmation %>:</th>
+      <td><%= f.password_field :current_password, autocomplete: "current-password", placeholder: "変更する場合のみ" %></td>
+    </tr>
+    <tr>
+      <th align="right"><%= f.label :current_password %> :</th>
+      <td><%= f.password_field :current_password, autocomplete: "current-password" %></td>
+    </tr>
+  </table>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(パスワードを変更する場合、確認のために必要です)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div>
-    <ul>
-      <li><%= f.submit "保存" %></li>
-      <li><%= link_to "キャンセル", "/users/profile" %></li>
-    </ul>
-  </div>
+  <ul class="form_submit">
+    <li><%= f.submit "保存", class: "form_button" %></li>
+    <li><%= link_to "キャンセル", "/users/account", class: "form_back" %></li>
+  </ul>
 <% end %>
