@@ -3,6 +3,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.3'
 
+# デバッグツール
+gem 'pry-rails'
+# 認証機能
+gem 'devise'
+# 認証機能日本語パッケージ
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+# 画像アップロード
+gem 'carrierwave', '~> 2.2.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
 # Use sqlite3 as the database for Active Record
@@ -27,6 +36,8 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+# 日本語化gem
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,3 +65,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# 検索機能
+gem 'ransack'

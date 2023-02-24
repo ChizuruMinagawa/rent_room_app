@@ -1,0 +1,23 @@
+<h2>プロフィール設定</h2>
+<div>
+  <ul class="profile">
+    <li><%= link_to"アカウント", "/users/account", class: "link_text" %></li>
+    <li><%= link_to"プロフィール", "/users/profile", class: "link_text" %></li>
+  </ul>
+</div>
+
+<div><%= link_to"編集", "/users/profile/edit", class: "link_text" %><div>
+
+<table class="profile_detail">
+  <tr>
+    <th colspan="2">
+      <% if current_user.user_image? %>
+          <img src='<%= current_user.user_image %>' class="show_icon_image">
+      <% else %>
+        <img src="/assets/default-aicon.png" class="show_icon_image">
+      <% end %>
+    </th>
+  </tr>
+  <tr><th align="right">名前:</th><td><%= current_user.user_name %></td></tr>
+  <tr><th align="right">自己紹介:</th><td><%= current_user.introduction %></td></tr>
+</table>

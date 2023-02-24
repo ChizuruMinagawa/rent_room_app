@@ -1,0 +1,16 @@
+// Place all the styles related to the rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.own_room_image {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.index_room_image {
+  width: 410px;
+  height: 250px;
+  border-radius: 30px;
+  object-fit: cover;
+}
