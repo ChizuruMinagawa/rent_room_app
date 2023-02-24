@@ -18,7 +18,7 @@
       <tr>
         <td>
           <% if reservation.room.room_image? %>
-            <img src='<%= room.room_image %>' class="own_room_image">
+            <img src='<%= reservation.room.room_image %>' class="own_room_image">
           <% else %>
             <img src="/assets/default-room.png" class="own_room_image">
           <% end %>
